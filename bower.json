@@ -1,0 +1,25 @@
+{
+  "name": "overture",
+  "version": "0.0.1",
+  "authors": [
+    "Neil Jenkins <neilj@fastmail.fm>"
+  ],
+  "description": "Overture is a JavaScript library that contains all the tools you need to build a slick, modern web app.",
+  "main": "build/Overture.min.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "overture",
+    "javascript"
+  ],
+  "license": "MIT",
+  "homepage": "http://overturejs.com/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
