@@ -4,7 +4,7 @@
 
 all: build docs
 
-build: build/Loader-raw.js build/Overture-raw.js build/ie8patches-raw.js
+build: build/Loader.js build/Overture.js build/ie8patches.js
 
 clean:
 	rm -rf build docs
@@ -25,7 +25,7 @@ include $(PATH_TO_DOC)/Makefile
 
 .SECONDEXPANSION:
 
-build/%-raw.js: $$(shell find source/% -name "*.js")
+build/%.js: $$(shell find source/% -name "*.js")
 	mkdir -p $(@D)
 	$(REMOVE_OLD)
 	$(MAKE_MODULE) _ _ $^ $@

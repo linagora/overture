@@ -92,17 +92,10 @@ MAKE_TZ := $(TOOLS)/olsonParser.js
 UPDATE_PO := $(TOOLS)/localise.js updatePo
 DB_TO_PO := $(TOOLS)/localise.js dbToPo
 
-ifeq ($(shell which sha1sum),)
-HASH_FILE := md5 -q
-else
-HASH_FILE := sha1sum
-endif
-
 define GZIP_AND_COMPRESS
 gzip -9c $@ > $@.gz
 TYPE=`echo $@ | cut -d . -f 2-`; \
-HASH=`$(HASH_FILE) $@ | cut -c 1-8`; \
-COMPRESSEDNAME=`echo $@ | sed s/raw/$$HASH/`; \
+COMPRESSEDNAME=`echo $@ | sed s/.js/.min.js/`; \
 if [ $$TYPE = js ]; then \
 uglifyjs $@ -c warnings=false -m > $$COMPRESSEDNAME; \
 elif [ $$TYPE = css ]; then \
@@ -114,5 +107,5 @@ gzip -9c $$COMPRESSEDNAME > $$COMPRESSEDNAME.gz
 endef
 
 define REMOVE_OLD
-rm -f $@ $@.gz `echo $@ $@.gz | sed "s/-raw/-????????/g"`
+rm -f $@ $@.gz `echo $@ $@.gz | sed "s/.js/.min.js/"`
 endef
