@@ -1506,7 +1506,7 @@ var Store = NS.Class({
             // Similarly if the record is committing, we don't know for sure
             // what state the update was applied on top of, so fetch again
             // to be sure.
-            if ( status & (COMMITTING|OBSOLETE) ) {
+            if ( status & OBSOLETE ) {
                 this.setStatus( storeKey, status & ~LOADING );
                 this.fetchData( storeKey );
                 continue;
